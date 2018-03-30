@@ -15,5 +15,7 @@ export class FooterComponent implements OnInit, AfterViewInit {
   ngOnInit() {
 
   }
-  
+  ngAfterViewInit() {
+
+  }
 }
