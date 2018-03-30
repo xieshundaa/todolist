@@ -1,17 +1,18 @@
 <footer class="footer" *ngIf="todos?.length > 0">
-    <span class="todo-count">
-      <strong>{{todos?.length}}</strong> {{todos?.length == 1 ? 'item' : 'items'}} left
-    </span>
-    <ul class="filters">
-      <li>
-        <a href="javascript:;">All</a>
-      </li>
-      <li>
-        <a href="javascript:;">Active</a>
-      </li>
-      <li>
-        <a href="javascript:;">Completed</a>
-      </li>
-    </ul>
-    <button class="clear-completed">Clear completed</button>
-  </footer>
+  <span class="todo-count">
+    <strong>{{todos?.length}}</strong> {{todos?.length == 1 ? 'item' : 'items'}} left
+  </span>
+  <ul class="filters">
+    <li>
+      <a routerLink="/todo/all" routerLinkActive="active">All</a>
+      <!-- routerLink="/crisis-center" -->
+    </li>
+    <li>
+      <a routerLink="/todo/active" routerLinkActive="active">Active</a>
+    </li>
+    <li>
+      <a routerLink="/todo/completed" routerLinkActive="active">Completed</a>
+    </li>
+  </ul>
+  <button class="clear-completed" (click)="clearCompleted()">Clear completed</button>
+</footer>

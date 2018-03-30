@@ -38,4 +38,7 @@ export class TodoService {
     };
     return this.http.put<Todo>(this.api_url + '/' + todoId, todo, httpOptions);
   }
+  activeTodo(status): Observable<Todo []> {
+    return this.http.get<Todo []>(this.api_url + '?completed=' + status);
+  }
 }

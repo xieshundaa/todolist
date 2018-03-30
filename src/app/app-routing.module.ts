@@ -6,11 +6,11 @@ import { LoginComponent } from './login/login.component';
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'todo',
+    redirectTo: 'todo/all',
     pathMatch: 'full'
   },
   {
-    path: 'todo',
+    path: 'todo/:filter',
     loadChildren: './todo/todo.module#TodoModule'
   },
   {

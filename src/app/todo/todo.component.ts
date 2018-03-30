@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Todo } from './todo';
 import { TodoService } from '../core/todo.service';
+import { ActivatedRoute, Router, Params } from '@angular/router';
 
 @Component({
   selector: 'app-todo',
@@ -11,10 +12,22 @@ export class TodoComponent implements OnInit {
   todos: Todo[] = [];
   desc = '';
   val: String = '';
-  constructor(private todoService: TodoService) { }
+  constructor(
+              private todoService: TodoService,
+              private activatedRoute: ActivatedRoute,
+              private router: Router
+            ) { }
 
   ngOnInit() {
-    this.getTodos();
+    this.activatedRoute.params.forEach((params: Params) => {
+      const filter = params['filter'];
+      console.log(filter);
+      switch (filter) {
+        case 'active': return this.todoService.activeTodo(false).subscribe(res => this.todos = res);
+        case 'completed': return this.todoService.activeTodo(true).subscribe(res => this.todos = res);
+        default: this.getTodos();
+      }
+    });
   }
 
   getTodos() {
